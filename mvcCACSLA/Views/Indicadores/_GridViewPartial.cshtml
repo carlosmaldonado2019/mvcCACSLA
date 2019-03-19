@@ -1,0 +1,41 @@
+@{
+	var grid = Html.DevExpress().GridView(settings => {
+        settings.Name = "GridView";
+        settings.CallbackRouteValues = new { Controller = "Indicadores", Action = "GridViewPartial" };
+		
+				
+		settings.KeyFieldName = "IdVariable";
+		
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+		
+				settings.Columns.Add("IdEstandar");
+				settings.Columns.Add("IdVariable");
+				settings.Columns.Add("DescripcionEstandar");
+				settings.Columns.Add("DescripcionVariable");
+			});
+	}
+@grid.Bind(Model).GetHtml()     settings.SettingsBehavior.ConfirmDelete = true;
+		
+		settings.CommandColumn.Visible = true;
+        settings.CommandColumn.ShowNewButton = true;
+        settings.CommandColumn.ShowDeleteButton = true;
+        settings.CommandColumn.ShowEditButton = true;
+				
+		settings.KeyFieldName = "IdCarrera";
+		
+		settings.SettingsPager.Visible = true;
+		settings.Settings.ShowGroupPanel = true;
+		settings.Settings.ShowFilterRow = true;
+		settings.SettingsBehavior.AllowSelectByRowClick = true;
+		
+				settings.Columns.Add("IdCarrera");
+				settings.Columns.Add("Descripcion");
+			});
+		if (ViewData["EditError"] != null){
+        grid.SetEditErrorText((string)ViewData["EditError"]);
+    }
+	}
+@grid.Bind(Model).GetHtml()

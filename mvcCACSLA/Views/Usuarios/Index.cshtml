@@ -1,0 +1,94 @@
+﻿
+@model PagedList.IPagedList<mvcCACSLA.Models.Usuarios>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Mantenimiento | Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Listado de Usuarios</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create",null,new { @class = "btn btn-primary" })
+</p>
+
+
+
+
+
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                Usuario
+            </th>
+            <th>
+                Password
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+               Activo
+            </th>
+            <th>
+               Carrera
+            </th>
+            <th>
+                Nivel
+            </th>
+            <th>
+                Coordinacion
+            </th>
+
+            <th>
+                SubeVariasCarreras
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model)
+{
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Carreras.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuarios_niveles.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Coordinaciones.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubeCarreras)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.IdUsuario }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUsuario })
+            </td>
+        </tr>
+    </tbody>
+}
+
+</table>
+
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<mvcCACSLA.Models.Indicadores_archivos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RutaArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaSubido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carreras.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indicadores.DescripcionEstandar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuarios.Login)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RutaArchivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreArchivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaSubido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carreras.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Indicadores.DescripcionEstandar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuarios.Login)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdArchivo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdArchivo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdArchivo })
+        </td>
+    </tr>
+}
+
+</table>

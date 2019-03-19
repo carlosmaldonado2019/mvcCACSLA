@@ -1,0 +1,82 @@
+﻿@model IEnumerable<mvcCACSLA.Models.Indicadores>
+
+@{
+    ViewBag.Title = "Mantenimiento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mantenimiento</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionEstandar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionVariable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Referente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionReferente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorMax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorObt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCoordinacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionEstandar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionVariable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Referente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionReferente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorMax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorObt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdCoordinacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new {idestandar = item.IdEstandar,idvariable = item.IdVariable }) |
+            @*@Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

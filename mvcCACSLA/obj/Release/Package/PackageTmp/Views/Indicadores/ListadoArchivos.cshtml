@@ -1,0 +1,69 @@
+﻿@model IEnumerable<mvcCACSLA.Models.IndicadorDetalle>
+@{
+    ViewBag.Title = "ListadoArchivos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListadoArchivos</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEstandar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdVariable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCarrera)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RutaArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaSubido)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdArchivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstandar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVariable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarrera)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RutaArchivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreArchivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaSubido)
+            </td>
+
+
+        </tr>
+    }
+
+</table>

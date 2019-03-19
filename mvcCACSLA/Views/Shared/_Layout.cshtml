@@ -1,0 +1,275 @@
+﻿@using mvcCACSLA.Models;
+@using mvcCACSLA.Models.Constantes;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sistema de Acreditación Nacional CACECA</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+
+    <div id='myModal' class='modal fade in'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContent'></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="encabezado hidden-xs">
+        <div class="container">
+            <img src="~/Content/imagenes/logo_uabc_4.png" class="img-responsive logouabc" style="display:inline-block" />
+            <img src="~/Content/imagenes/caceca_3.png" class="img-responsive logocaceca" style="display:inline-block" />
+
+
+        </div>
+    </div>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("CACECA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        UserManager UM = new UserManager();
+                        if (UM.IsUserInRole(User.Identity.Name, EstandarNum.RoleAcree))
+                        {
+                            <li><a href="~/Acreeditadores/Index">Indicadores</a></li>
+
+                        }
+                        else
+                        {
+                            <li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Categorías<span class="caret"></span>
+                                </a>
+                                <ul id="Indicador" class="dropdown-menu">
+                                    <li><a href="~/Indicadores/Index/1">1.- Personal Académico</a></li>
+                                    <li><a href="~/Indicadores/Index/2">2.- Estudiantes</a></li>
+                                    <li><a href="~/Indicadores/Index/3">3.- Plan de Estudios</a></li>
+                                    <li><a href="~/Indicadores/Index/4">4.- Evaluación del Aprendizaje</a></li>
+                                    <li><a href="~/Indicadores/Index/5">5.- Formación Integral</a></li>
+                                    <li><a href="~/Indicadores/Index/6">6.- Servicio de Apoyo para el Aprendizaje</a></li>
+                                    <li><a href="~/Indicadores/Index/7">7.- Vinculación - Extensión</a></li>
+                                    <li><a href="~/Indicadores/Index/8">8.- Investigación</a></li>
+                                    <li><a href="~/Indicadores/Index/9">9.- Infraestructura y Equipamiento</a></li>
+                                    <li><a href="~/Indicadores/Index/10">10.- Gestión Administrativa y Financiamiento</a></li>
+                                </ul>
+                            </li>
+                            //Menu Geenerales Agregado: 06/12/2016
+                            <li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Generales<span class="caret"></span>
+                                </a>
+                                <ul id="Generales" class="dropdown-menu">
+                                    <li><a href="#">Cartas Descriptivas</a></li>
+                                    <li><a href="#">Normatividad</a></li>
+                                    <li><a href="#">Convenios</a></li>
+                                    <li><a href="#">Plan de Estudios</a></li>
+
+                                    @*<li><a href="~/Indicadores/Index/2">2.- Estudiantes</a></li>*@
+                                </ul>
+                            </li>
+
+                        }
+
+
+                        if (UM.IsUserInRole(User.Identity.Name, EstandarNum.RoleAdmin))
+                        {
+                            <li>@Html.ActionLink("Reportes", "Index", "Usuarios")</li>
+                            /// <li>@Html.ActionLink("Generales","Generales","Home")</li>
+                            ///
+
+                            <li role="presentation" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    Mantenimiento<span class="caret"></span>
+                                </a>
+                                <ul id="mantenimiento" class="dropdown-menu">
+                                    <li>@Html.ActionLink("Indicadores", "Mantenimiento", "Indicadores")</li>
+                                    <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                                    <li>@Html.ActionLink("Coordinaciones", "Index", "Coordinaciones")</li>
+
+
+                                    @*<li><a href="~/Indicadores/Index/2">2.- Estudiantes</a></li>*@
+                                </ul>
+                            </li>
+                            @*<li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>*@
+
+                        }
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+                @*@if (Request.IsAuthenticated)
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.Encode(User.Identity.Name)</li>
+                            <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Login")</li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("Iniciar Sesión", "Login", "Login")</li>
+                        </ul>
+                    }*@
+
+            </div>
+        </div>
+    </div>
+    <div id="viewPlaceHolder" class="container body-content">
+        <div class="modal_fundamentacion" style="display: none">
+            <div class="text-center">
+                <img alt="" src=~/Content/imagenes/ajax-loader.gif />
+            </div>
+        </div>
+
+        @RenderBody()
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            function remove_hash_from_url() {
+                var uri = window.location.toString();
+                if (uri.indexOf("#") > 0) {
+                    var clean_uri = uri.substring(0, uri.indexOf("#"));
+                    window.history.replaceState({}, document.title, clean_uri);
+                    return clean_uri;
+                }
+            }
+
+            $.ajaxSetup({
+                cache: false,
+                beforeSend: function () {
+                    $(".modal_fundamentacion").show();
+                },
+                complete: function () {
+                    $(".modal_fundamentacion").hide();
+                }
+            });
+
+
+            $('#Indicador li').on("click", function (e) {
+                e.preventDefault();
+                var index = $(this).index();
+                var id = index + 1;
+                $.ajax({
+                    type: "GET",
+                    url: "/Indicadores/Index?id=" + id,
+                    contentType: "application/html",
+                    dataType: "html",
+                    success: function (result) {
+                        $("#viewPlaceHolder").html(result);
+                       // location.hash = "/Indicadores/Index?id=" + id;
+                        //var newurl = remove_hash_from_url();
+                        
+                        $("#viewPlaceHolder").on("click", "a[data-modal]", function (e) {
+                            $('#myModalContent').load(this.href, function () {
+                                $('#myModal').modal({
+                                    keyboard: true
+                                }, 'show');
+
+                                bindForm(this);
+                            });
+                            return false;
+                        });
+
+
+                        $("#viewPlaceHolder").on("click", "#btnUpload", function (e) {
+                            $('#myModalContent').load(this.href, function () {
+                                $('#myModal').modal({
+                                    keyboard: true
+                                }, 'show');
+
+                                bindForm(this);
+                            });
+                            return false;
+                        });
+
+                        $("#viewPlaceHolder").delete("#btnGuardar", "click", function (e) {
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: "",
+                                contentType: "",
+                                dataType: ""
+                            });
+                        });
+
+                    }
+                });
+               
+            });
+
+            $("#Generales li").on("click", function (e) {
+                e.preventDefault();
+                var index = $(this).index();
+                var id = index + 1;
+                $.ajax({
+                    type: "GET",
+                    url: "/Home/Normatividad",
+                    contentType: "application/html",
+                    dataType: "html",
+                    success: function (result) {
+                        $("#viewPlaceHolder").html(result);
+                    }
+                });
+            });
+        });
+
+        function bindForm(dialog) {
+            $('form', dialog).submit(function () {
+                var fileUpload = $(":file").get(0);
+                var files = fileUpload.files;
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: files,
+                    success: function (result) {
+                        if (result.success) {
+                            $('#myModal').modal('hide');
+                             location.reload();
+                        } else {
+                           
+                            //$('#myModalContent').html(result);
+                            //bindForm();
+                        }
+                    }
+                });
+                return false;
+            });
+        }
+
+    </script>
+
+    <footer class="footer">
+        <div class="container">
+            @* <p>&copy; @DateTime.Now.Year - D.R.© Universidad Autónoma de Baja California | Facultad de Ciencias Administrativas | Mexicali Baja California</p>*@
+            @Html.Partial("_Footer")
+        </div>
+    </footer>
+</body>
+
+</html>
+
+

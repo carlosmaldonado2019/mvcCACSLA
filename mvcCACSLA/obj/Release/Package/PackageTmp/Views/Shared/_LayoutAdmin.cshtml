@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sistema de Acreditación Internacional CACSLA</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("CACSLA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Estandares <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/Indicadores/Index/1">Estandar - 1</a></li>
+                                <li><a href="~/Indicadores/Index/2">Estandar - 2</a></li>
+                                <li><a href="~/Indicadores/Index/3">Estandar - 3</a></li>
+                                <li><a href="~/Indicadores/Index/4">Estandar - 4</a></li>
+                                <li><a href="~/Indicadores/Index/5">Estandar - 5</a></li>
+                                <li><a href="~/Indicadores/Index/6">Estandar - 6</a></li>
+                                <li><a href="~/Indicadores/Index/7">Estandar - 7</a></li>
+                                <li><a href="~/Indicadores/Index/8">Estandar - 8</a></li>
+                                <li><a href="~/Indicadores/Index/9">Estandar - 9</a></li>
+                                <li><a href="~/Indicadores/Index/10">Estandar - 10</a></li>
+                                <li><a href="~/Indicadores/Index/11">Estandar - 11</a></li>
+                                <li><a href="~/Indicadores/Index/12">Estandar - 12</a></li>
+                            </ul>
+                        </li>
+                           
+                        
+                            <li>@Html.ActionLink("Reportes", "Index", "Usuarios")</li>
+                            <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                        
+
+                    }
+                </ul>
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.Encode(User.Identity.Name) @Session["UserDescripcion"]</li>
+                        <li>@Html.ActionLink("Cerrar Sesion", "Logout", "Login")</li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Iniciar Sesion", "Login", "Login")</li>
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="container">
+                <div class="col-md-12 text-center">
+                    <p>&copy; @DateTime.Now.Year - D.R.© Universidad Autónoma de Baja California | Facultad de Ciencias Administrativas | Mexicali Baja California</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

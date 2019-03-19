@@ -1,0 +1,125 @@
+﻿@model mvcCACSLA.Models.Indicadores_archivos
+<style type="text/css">
+    .loader {
+        top: 50%;
+        left: 50%;
+        margin: 300px auto;
+        margin-top: -75px;
+        margin-left: -75px;
+        position: absolute;
+        /*z-index: 999;*/
+        /*height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        -moz-opacity: 0.8;*/
+    }
+
+    .center {
+        /*z-index: 1000;*/
+        /*margin: 300px auto;
+        padding: 10px;
+        width: 130px;
+        /*background-color: White;
+        border-radius: 10px;
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -moz-opacity: 1;*/
+    }
+
+        .center img {
+            height: 128px;
+            width: 128px;
+        }
+</style>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Subir Evidencias</h3>
+</div>
+
+<div class="modal-body">
+
+    @using (Html.BeginForm("Create", "indicadores_archivos", FormMethod.Post,
+                        new
+                        {
+                            enctype = "multipart/form-data"
+
+
+                        }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdEstandar, "IdVariable", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdEstandar, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.IdVariable, "IdVariable", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdVariable, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdVariable, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdCarrera, "IdCarrera", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdCarrera", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdCarrera, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdUsuario, "IdUsuario", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IdUsuario", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdUsuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal-footer">
+            <div class="loader" style="display: none">
+                <div class="text-center">
+                    <img alt="" src=~/Content/imagenes/ajax-loader.gif />
+                </div>
+            </div>
+
+            <input type="file" name="Files"  class="form-control" id="FileUpload1" />
+            @*@Html.TextBoxFor(m => m.Archivos, new { @class = "form-control", type = "file" ,multiple = "multiple" })*@
+            @*<button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>*@
+             
+            <input id="btnUpload"  value="Subir" class="btn btn-primary" type="submit"/>
+        </div>
+
+    }
+</div>
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+
+</script>
+}

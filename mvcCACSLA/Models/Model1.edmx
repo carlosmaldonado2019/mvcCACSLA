@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_9F6318_fcacacslav2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Carreras">
+          <Key>
+            <PropertyRef Name="IdCarrera" />
+          </Key>
+          <Property Name="IdCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="Clave" Type="int" />
+          <Property Name="Ini" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Coordinaciones">
+          <Key>
+            <PropertyRef Name="IdCoordinacion" />
+          </Key>
+          <Property Name="IdCoordinacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Indicadores">
+          <Key>
+            <PropertyRef Name="IdEstandar" />
+            <PropertyRef Name="IdVariable" />
+          </Key>
+          <Property Name="IdEstandar" Type="int" Nullable="false" />
+          <Property Name="IdVariable" Type="int" Nullable="false" />
+          <Property Name="DescripcionEstandar" Type="varchar" MaxLength="400" />
+          <Property Name="DescripcionVariable" Type="varchar" MaxLength="250" />
+          <Property Name="Referente" Type="int" Nullable="false" />
+          <Property Name="DescripcionReferente" Type="varchar" MaxLength="250" />
+          <Property Name="IdCoordinacion" Type="int" Nullable="false" />
+          <Property Name="ValorObt" Type="int" Nullable="false" />
+          <Property Name="ValorMax" Type="int" Nullable="false" />
+          <Property Name="Anexo" Type="varchar" MaxLength="50" />
+          <Property Name="Observado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Indicadores_archivos">
+          <Key>
+            <PropertyRef Name="IdArchivo" />
+          </Key>
+          <Property Name="IdArchivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEstandar" Type="int" Nullable="false" />
+          <Property Name="IdVariable" Type="int" Nullable="false" />
+          <Property Name="IdCarrera" Type="int" Nullable="false" />
+          <Property Name="RutaArchivo" Type="varchar(max)" />
+          <Property Name="NombreArchivo" Type="varchar(max)" />
+          <Property Name="FechaSubido" Type="datetime" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Indicadores_detalle">
+          <Key>
+            <PropertyRef Name="IdFundamentacion" />
+          </Key>
+          <Property Name="IdFundamentacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="IdEstandar" Type="int" Nullable="false" />
+          <Property Name="IdVariable" Type="int" Nullable="false" />
+          <Property Name="IdCarrera" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="IdNivel" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="int" Nullable="false" />
+          <Property Name="IdCarrera" Type="int" Nullable="false" />
+          <Property Name="IdCoordinacion" Type="int" Nullable="false" />
+          <Property Name="SubeCarreras" Type="bit" />
+        </EntityType>
+        <EntityType Name="Usuarios_niveles">
+          <Key>
+            <PropertyRef Name="IdNivel" />
+          </Key>
+          <Property Name="IdNivel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Indicadores_archivos_Carreras">
+          <End Role="Carreras" Type="Self.Carreras" Multiplicity="1" />
+          <End Role="Indicadores_archivos" Type="Self.Indicadores_archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carreras">
+              <PropertyRef Name="IdCarrera" />
+            </Principal>
+            <Dependent Role="Indicadores_archivos">
+              <PropertyRef Name="IdCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_archivos_Indicadores">
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Indicadores_archivos" Type="Self.Indicadores_archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicadores">
+              <PropertyRef Name="IdEstandar" />
+              <PropertyRef Name="IdVariable" />
+            </Principal>
+            <Dependent Role="Indicadores_archivos">
+              <PropertyRef Name="IdEstandar" />
+              <PropertyRef Name="IdVariable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_archivos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Indicadores_archivos" Type="Self.Indicadores_archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Indicadores_archivos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_detalle_Carreras">
+          <End Role="Carreras" Type="Self.Carreras" Multiplicity="1" />
+          <End Role="Indicadores_detalle" Type="Self.Indicadores_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carreras">
+              <PropertyRef Name="IdCarrera" />
+            </Principal>
+            <Dependent Role="Indicadores_detalle">
+              <PropertyRef Name="IdCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_detalle_Indicadores">
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="1" />
+          <End Role="Indicadores_detalle" Type="Self.Indicadores_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicadores">
+              <PropertyRef Name="IdEstandar" />
+              <PropertyRef Name="IdVariable" />
+            </Principal>
+            <Dependent Role="Indicadores_detalle">
+              <PropertyRef Name="IdEstandar" />
+              <PropertyRef Name="IdVariable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_detalle_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Indicadores_detalle" Type="Self.Indicadores_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Indicadores_detalle">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Carreras">
+          <End Role="Carreras" Type="Self.Carreras" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carreras">
+              <PropertyRef Name="IdCarrera" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Coordinaciones">
+          <End Role="Coordinaciones" Type="Self.Coordinaciones" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coordinaciones">
+              <PropertyRef Name="IdCoordinacion" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdCoordinacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Usuarios_niveles">
+          <End Role="Usuarios_niveles" Type="Self.Usuarios_niveles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios_niveles">
+              <PropertyRef Name="IdNivel" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_Estandar_1_GetVariable_Archivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="usp_Estandar-1_GetVariable_Archivos">
+          <Parameter Name="parametro" Type="varchar" Mode="In" />
+          <Parameter Name="carrera" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DB_9F6318_fcacacslav2ModelStoreContainer">
+          <EntitySet Name="Carreras" EntityType="Self.Carreras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coordinaciones" EntityType="Self.Coordinaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Indicadores" EntityType="Self.Indicadores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Indicadores_archivos" EntityType="Self.Indicadores_archivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Indicadores_detalle" EntityType="Self.Indicadores_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios_niveles" EntityType="Self.Usuarios_niveles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Indicadores_archivos_Carreras" Association="Self.FK_Indicadores_archivos_Carreras">
+            <End Role="Carreras" EntitySet="Carreras" />
+            <End Role="Indicadores_archivos" EntitySet="Indicadores_archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_archivos_Indicadores" Association="Self.FK_Indicadores_archivos_Indicadores">
+            <End Role="Indicadores" EntitySet="Indicadores" />
+            <End Role="Indicadores_archivos" EntitySet="Indicadores_archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_archivos_Usuarios" Association="Self.FK_Indicadores_archivos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Indicadores_archivos" EntitySet="Indicadores_archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_detalle_Carreras" Association="Self.FK_Indicadores_detalle_Carreras">
+            <End Role="Carreras" EntitySet="Carreras" />
+            <End Role="Indicadores_detalle" EntitySet="Indicadores_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_detalle_Indicadores" Association="Self.FK_Indicadores_detalle_Indicadores">
+            <End Role="Indicadores" EntitySet="Indicadores" />
+            <End Role="Indicadores_detalle" EntitySet="Indicadores_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_detalle_Usuarios" Association="Self.FK_Indicadores_detalle_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Indicadores_detalle" EntitySet="Indicadores_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Carreras" Association="Self.FK_Usuarios_Carreras">
+            <End Role="Carreras" EntitySet="Carreras" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Coordinaciones" Association="Self.FK_Usuarios_Coordinaciones">
+            <End Role="Coordinaciones" EntitySet="Coordinaciones" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Usuarios_niveles" Association="Self.FK_Usuarios_Usuarios_niveles">
+            <End Role="Usuarios_niveles" EntitySet="Usuarios_niveles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_9F6318_fcacacslav2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Carreras">
+          <Key>
+            <PropertyRef Name="IdCarrera" />
+          </Key>
+          <Property Name="IdCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="Int32" />
+          <Property Name="Ini" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Indicadores_archivos" Relationship="Self.FK_Indicadores_archivos_Carreras" FromRole="Carreras" ToRole="Indicadores_archivos" />
+          <NavigationProperty Name="Indicadores_detalle" Relationship="Self.FK_Indicadores_detalle_Carreras" FromRole="Carreras" ToRole="Indicadores_detalle" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Carreras" FromRole="Carreras" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Indicadores">
+          <Key>
+            <PropertyRef Name="IdEstandar" />
+            <PropertyRef Name="IdVariable" />
+          </Key>
+          <Property Name="IdEstandar" Type="Int32" Nullable="false" />
+          <Property Name="IdVariable" Type="Int32" Nullable="false" />
+          <Property Name="DescripcionEstandar" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionVariable" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Referente" Type="Int32" Nullable="false" />
+          <Property Name="DescripcionReferente" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Anexo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ValorMax" Type="Int32" Nullable="false" />
+          <Property Name="ValorObt" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Indicadores_archivos" Relationship="Self.FK_Indicadores_archivos_Indicadores" FromRole="Indicadores" ToRole="Indicadores_archivos" />
+          <NavigationProperty Name="Indicadores_detalle" Relationship="Self.FK_Indicadores_detalle_Indicadores" FromRole="Indicadores" ToRole="Indicadores_detalle" />
+          <Property Name="IdCoordinacion" Type="Int32" Nullable="false" />
+          <Property Name="Observado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Indicadores_archivos">
+          <Key>
+            <PropertyRef Name="IdArchivo" />
+          </Key>
+          <Property Name="IdArchivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEstandar" Type="Int32" Nullable="false" />
+          <Property Name="IdVariable" Type="Int32" Nullable="false" />
+          <Property Name="IdCarrera" Type="Int32" Nullable="false" />
+          <Property Name="RutaArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombreArchivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaSubido" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carreras" Relationship="Self.FK_Indicadores_archivos_Carreras" FromRole="Indicadores_archivos" ToRole="Carreras" />
+          <NavigationProperty Name="Indicadores" Relationship="Self.FK_Indicadores_archivos_Indicadores" FromRole="Indicadores_archivos" ToRole="Indicadores" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Indicadores_archivos_Usuarios" FromRole="Indicadores_archivos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Indicadores_detalle">
+          <Key>
+            <PropertyRef Name="IdFundamentacion" />
+          </Key>
+          <Property Name="IdFundamentacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstandar" Type="Int32" Nullable="false" />
+          <Property Name="IdVariable" Type="Int32" Nullable="false" />
+          <Property Name="IdCarrera" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carreras" Relationship="Self.FK_Indicadores_detalle_Carreras" FromRole="Indicadores_detalle" ToRole="Carreras" />
+          <NavigationProperty Name="Indicadores" Relationship="Self.FK_Indicadores_detalle_Indicadores" FromRole="Indicadores_detalle" ToRole="Indicadores" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Indicadores_detalle_Usuarios" FromRole="Indicadores_detalle" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdNivel" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Int32" Nullable="false" />
+          <Property Name="IdCarrera" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carreras" Relationship="Self.FK_Usuarios_Carreras" FromRole="Usuarios" ToRole="Carreras" />
+          <NavigationProperty Name="Indicadores_archivos" Relationship="Self.FK_Indicadores_archivos_Usuarios" FromRole="Usuarios" ToRole="Indicadores_archivos" />
+          <NavigationProperty Name="Indicadores_detalle" Relationship="Self.FK_Indicadores_detalle_Usuarios" FromRole="Usuarios" ToRole="Indicadores_detalle" />
+          <NavigationProperty Name="Usuarios_niveles" Relationship="Self.FK_Usuarios_Usuarios_niveles" FromRole="Usuarios" ToRole="Usuarios_niveles" />
+          <Property Name="IdCoordinacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coordinaciones" Relationship="DB_9F6318_fcacacslav2Model.FK_Usuarios_Coordinaciones" FromRole="Usuarios" ToRole="Coordinaciones" />
+          <Property Name="SubeCarreras" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Usuarios_niveles">
+          <Key>
+            <PropertyRef Name="IdNivel" />
+          </Key>
+          <Property Name="IdNivel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Usuarios_niveles" FromRole="Usuarios_niveles" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK_Indicadores_archivos_Carreras">
+          <End Role="Carreras" Type="Self.Carreras" Multiplicity="1" />
+          <End Role="Indicadores_archivos" Type="Self.Indicadores_archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carreras">
+              <PropertyRef Name="IdCarrera" />
+            </Principal>
+            <Dependent Role="Indicadores_archivos">
+              <PropertyRef Name="IdCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_detalle_Carreras">
+          <End Role="Carreras" Type="Self.Carreras" Multiplicity="1" />
+          <End Role="Indicadores_detalle" Type="Self.Indicadores_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carreras">
+              <PropertyRef Name="IdCarrera" />
+            </Principal>
+            <Dependent Role="Indicadores_detalle">
+              <PropertyRef Name="IdCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Carreras">
+          <End Role="Carreras" Type="Self.Carreras" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carreras">
+              <PropertyRef Name="IdCarrera" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_archivos_Indicadores">
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Indicadores_archivos" Type="Self.Indicadores_archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicadores">
+              <PropertyRef Name="IdEstandar" />
+              <PropertyRef Name="IdVariable" />
+            </Principal>
+            <Dependent Role="Indicadores_archivos">
+              <PropertyRef Name="IdEstandar" />
+              <PropertyRef Name="IdVariable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_detalle_Indicadores">
+          <End Role="Indicadores" Type="Self.Indicadores" Multiplicity="1" />
+          <End Role="Indicadores_detalle" Type="Self.Indicadores_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Indicadores">
+              <PropertyRef Name="IdEstandar" />
+              <PropertyRef Name="IdVariable" />
+            </Principal>
+            <Dependent Role="Indicadores_detalle">
+              <PropertyRef Name="IdEstandar" />
+              <PropertyRef Name="IdVariable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_archivos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Indicadores_archivos" Type="Self.Indicadores_archivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Indicadores_archivos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indicadores_detalle_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Indicadores_detalle" Type="Self.Indicadores_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Indicadores_detalle">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Usuarios_niveles">
+          <End Role="Usuarios_niveles" Type="Self.Usuarios_niveles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios_niveles">
+              <PropertyRef Name="IdNivel" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_9F6318_fcacacslav2Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carreras" EntityType="Self.Carreras" />
+          <EntitySet Name="Indicadores" EntityType="Self.Indicadores" />
+          <EntitySet Name="Indicadores_archivos" EntityType="Self.Indicadores_archivos" />
+          <EntitySet Name="Indicadores_detalle" EntityType="Self.Indicadores_detalle" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="Usuarios_niveles" EntityType="Self.Usuarios_niveles" />
+          <AssociationSet Name="FK_Indicadores_archivos_Carreras" Association="Self.FK_Indicadores_archivos_Carreras">
+            <End Role="Carreras" EntitySet="Carreras" />
+            <End Role="Indicadores_archivos" EntitySet="Indicadores_archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_detalle_Carreras" Association="Self.FK_Indicadores_detalle_Carreras">
+            <End Role="Carreras" EntitySet="Carreras" />
+            <End Role="Indicadores_detalle" EntitySet="Indicadores_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Carreras" Association="Self.FK_Usuarios_Carreras">
+            <End Role="Carreras" EntitySet="Carreras" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_archivos_Indicadores" Association="Self.FK_Indicadores_archivos_Indicadores">
+            <End Role="Indicadores" EntitySet="Indicadores" />
+            <End Role="Indicadores_archivos" EntitySet="Indicadores_archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_detalle_Indicadores" Association="Self.FK_Indicadores_detalle_Indicadores">
+            <End Role="Indicadores" EntitySet="Indicadores" />
+            <End Role="Indicadores_detalle" EntitySet="Indicadores_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_archivos_Usuarios" Association="Self.FK_Indicadores_archivos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Indicadores_archivos" EntitySet="Indicadores_archivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indicadores_detalle_Usuarios" Association="Self.FK_Indicadores_detalle_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Indicadores_detalle" EntitySet="Indicadores_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Usuarios_niveles" Association="Self.FK_Usuarios_Usuarios_niveles">
+            <End Role="Usuarios_niveles" EntitySet="Usuarios_niveles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <FunctionImport Name="usp_Estandar_1_GetVariable_Archivos" ReturnType="Collection(DB_9F6318_fcacacslav2Model.usp_Estandar_1_GetVariable_Archivos_Result)">
+            <Parameter Name="parametro" Mode="In" Type="String" />
+            <Parameter Name="carrera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Estandar_GetVariables_Archivos" ReturnType="Collection(DB_9F6318_fcacacslav2Model.usp_Estandar_1_GetVariable_Archivos_Result)">
+            <Parameter Name="parametro" Mode="In" Type="String" />
+            <Parameter Name="carrera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Coordinaciones" EntityType="DB_9F6318_fcacacslav2Model.Coordinaciones" />
+          <AssociationSet Name="FK_Usuarios_Coordinaciones" Association="DB_9F6318_fcacacslav2Model.FK_Usuarios_Coordinaciones">
+            <End Role="Coordinaciones" EntitySet="Coordinaciones" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="usp_Estandar_1_GetVariable_Archivos_Result">
+          <Property Type="Int32" Name="IdArchivo" Nullable="false" />
+          <Property Type="Int32" Name="IdEstandar" Nullable="false" />
+          <Property Type="Int32" Name="IdVariable" Nullable="false" />
+          <Property Type="Int32" Name="IdCarrera" Nullable="false" />
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="String" Name="RutaArchivo" Nullable="true" />
+          <Property Type="String" Name="NombreArchivo" Nullable="true" />
+          <Property Type="DateTime" Name="FechaSubido" Nullable="true" />
+          <Property Type="String" Name="Ini" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Coordinaciones">
+          <Key>
+            <PropertyRef Name="IdCoordinacion" />
+          </Key>
+          <Property Name="IdCoordinacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="DB_9F6318_fcacacslav2Model.FK_Usuarios_Coordinaciones" FromRole="Coordinaciones" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK_Usuarios_Coordinaciones">
+          <End Type="DB_9F6318_fcacacslav2Model.Coordinaciones" Role="Coordinaciones" Multiplicity="1" />
+          <End Type="DB_9F6318_fcacacslav2Model.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coordinaciones">
+              <PropertyRef Name="IdCoordinacion" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="IdCoordinacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_9F6318_fcacacslav2ModelStoreContainer" CdmEntityContainer="DB_9F6318_fcacacslav2Entities1">
+          <EntitySetMapping Name="Carreras">
+            <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Carreras">
+              <MappingFragment StoreEntitySet="Carreras">
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Ini" ColumnName="Ini" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Indicadores">
+            <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Indicadores">
+              <MappingFragment StoreEntitySet="Indicadores">
+                <ScalarProperty Name="Observado" ColumnName="Observado" />
+                <ScalarProperty Name="IdCoordinacion" ColumnName="IdCoordinacion" />
+                <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+                <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+                <ScalarProperty Name="DescripcionEstandar" ColumnName="DescripcionEstandar" />
+                <ScalarProperty Name="DescripcionVariable" ColumnName="DescripcionVariable" />
+                <ScalarProperty Name="Referente" ColumnName="Referente" />
+                <ScalarProperty Name="DescripcionReferente" ColumnName="DescripcionReferente" />
+                <ScalarProperty Name="Anexo" ColumnName="Anexo" />
+                <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+                <ScalarProperty Name="ValorObt" ColumnName="ValorObt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Indicadores_archivos">
+            <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Indicadores_archivos">
+              <MappingFragment StoreEntitySet="Indicadores_archivos">
+                <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+                <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+                <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+                <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="FechaSubido" ColumnName="FechaSubido" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Indicadores_detalle">
+            <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Indicadores_detalle">
+              <MappingFragment StoreEntitySet="Indicadores_detalle">
+                <ScalarProperty Name="IdFundamentacion" ColumnName="IdFundamentacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+                <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="SubeCarreras" ColumnName="SubeCarreras" />
+                <ScalarProperty Name="IdCoordinacion" ColumnName="IdCoordinacion" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios_niveles">
+            <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Usuarios_niveles">
+              <MappingFragment StoreEntitySet="Usuarios_niveles">
+                <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Estandar_1_GetVariable_Archivos" FunctionName="DB_9F6318_fcacacslav2Model.Store.usp_Estandar_1_GetVariable_Archivos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_9F6318_fcacacslav2Model.usp_Estandar_1_GetVariable_Archivos_Result">
+                <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+                <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+                <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="FechaSubido" ColumnName="FechaSubido" />
+                <ScalarProperty Name="Ini" ColumnName="Ini" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Estandar_GetVariables_Archivos" FunctionName="DB_9F6318_fcacacslav2Model.Store.usp_Estandar_1_GetVariable_Archivos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_9F6318_fcacacslav2Model.usp_Estandar_1_GetVariable_Archivos_Result">
+                <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+                <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+                <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+                <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="FechaSubido" ColumnName="FechaSubido" />
+                <ScalarProperty Name="Ini" ColumnName="Ini" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Coordinaciones">
+            <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Coordinaciones">
+              <MappingFragment StoreEntitySet="Coordinaciones">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdCoordinacion" ColumnName="IdCoordinacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

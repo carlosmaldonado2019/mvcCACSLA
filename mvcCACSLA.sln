@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvcCACSLA", "mvcCACSLA\mvcCACSLA.csproj", "{B542E44B-59AE-43BC-9298-507E5A930702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvcCACSLA.Test", "mvcCACSLA.Test\mvcCACSLA.Test.csproj", "{A3AEE84F-63F6-4771-B21E-F6E38E7583B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B542E44B-59AE-43BC-9298-507E5A930702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B542E44B-59AE-43BC-9298-507E5A930702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B542E44B-59AE-43BC-9298-507E5A930702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B542E44B-59AE-43BC-9298-507E5A930702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3AEE84F-63F6-4771-B21E-F6E38E7583B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3AEE84F-63F6-4771-B21E-F6E38E7583B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3AEE84F-63F6-4771-B21E-F6E38E7583B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3AEE84F-63F6-4771-B21E-F6E38E7583B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,235 @@
+﻿@model IEnumerable<mvcCACSLA.Models.Indicadores>
+@*@model PagedList.IPagedList<mvcCACSLA.Models.Indicadores>*@
+@using System.Web.UI.WebControls;
+@using PagedList.Mvc;
+@using mvcCACSLA.Models;
+@using mvcCACSLA.Models.Constantes;
+
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">*@
+
+@*@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+
+<div class="modal_fundamentacion" style="display: none">
+    <div class="text-center">
+        <img alt="" src=~/Content/imagenes/ajax-loader.gif />
+    </div>
+</div>
+
+<h3 class="text-center"><span class="label label-primary">@ViewBag.Title</span></h3>
+<br />
+
+@*<div class="alert alert-success" role="alert"></div>*@
+
+<div class="row">
+    <div class="col-md-6">
+        @if (@TempData["Message"] != null)
+        {
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                @TempData["Message"]
+            </div>
+        }
+
+    </div>
+</div>
+
+@using (Html.BeginForm("GuardarValores", "Indicadores"))
+
+{
+        @Html.AntiForgeryToken()
+        <table class="table table-striped table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th>
+                        Categoria
+                    </th>
+                    <th>
+                        Variable
+                    </th>
+                    <th>
+                        Descripción Variable
+                    </th>
+                    <th>
+
+                    </th>
+                    <th>
+                        Criterio
+                    </th>
+                    <th>
+                        Valor Maximo
+                    </th>
+                    <th>
+                        Valor Obtenido
+                    </th>
+                    <th>
+                        Evidencias
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+
+            {
+
+                <tbody>
+                    <tr>
+                        @*<td>
+                               @Html.ActionLink("Editar", "Edit", new { idestandar = item.IdEstandar,idvariable = item.IdVariable }) |
+                            </td>*@
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.IdEstandar)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.IdVariable)
+                        </td>
+                        <td class="text-justify">
+                            @Html.DisplayFor(modelItem => item.DescripcionVariable)
+                            @Html.HiddenFor(modelItem => item.DescripcionEstandar)
+
+
+                        </td>
+                        <td>
+                            @Html.Raw("<a data-modal='' href='" + Url.Action("VerFundamentacion", "Indicadores_detalle", new { idestandar = item.IdEstandar, idvariable = item.IdVariable }) + "' title='Ver Fundamentacion'> <span class='glyphicon glyphicon-list-alt'> </span> </a>")
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DescripcionReferente)
+                            @Html.HiddenFor(modelItem => item.Referente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ValorMax)
+                        </td>
+                        <td>
+                            @*@Html.EditorFor(modelItem => item.ValorObt, new { htmlAttributes = new { @class = "form-control", @min = "0", @max = "20" } })*@
+                            <input id="valores" type="number" name="valores" min="0" max="20" value="@item.ValorObt" />
+                            <input type="hidden" name="variables" value="@item.IdVariable" />
+                            <input type="hidden" name="estandar" value="@item.IdEstandar" />
+                           
+                            @Html.HiddenFor(modelItem => item.IdCoordinacion)
+                            @Html.HiddenFor(modelItem => item.Anexo)
+                        </td>
+                        <td>
+
+                            @if (item.Indicadores_archivos.Count() > 0)
+                            {
+                                UserManager UM = new UserManager();
+                                string role = UM.GetUserRole(User.Identity.Name);
+                                switch (role)
+                                {
+                                    case EstandarNum.RoleAdmin:
+                                        if (item.Indicadores_archivos.Count() == 0)
+                                        {
+                                            @Html.ActionLink("Agregar", "Index", "Indicadores_archivos", new { idestandar = item.IdEstandar, idvariable = item.IdVariable }, new { @class = "btn btn-default btn-sm" })
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(@item.Indicadores_archivos.Count().ToString() + " Archivo(s)", "Index", "Indicadores_archivos", new { idestandar = item.IdEstandar, idvariable = item.IdVariable }, new { @class = "btn btn-primary btn-sm" })
+                                        }
+                                        break;
+                                    case EstandarNum.RoleCoord:
+                                    case EstandarNum.RoleUser:
+
+                                        int idcarrera = UM.GetUserCarrera(User.Identity.Name);
+                                        bool b = UM.GetUserSubeCarreras(User.Identity.Name);
+                                        if (b == EstandarNum.SubeCarreas)
+                                        {
+                                            if (item.Indicadores_archivos.Count() == 0)
+                                            {
+                                                @Html.ActionLink("Agregar", "Index", "Indicadores_archivos", new { idestandar = item.IdEstandar, idvariable = item.IdVariable }, new { @class = "btn btn-default btn-sm" })
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink(@item.Indicadores_archivos.Count().ToString() + " Archivo(s)", "Index", "Indicadores_archivos", new { idestandar = item.IdEstandar, idvariable = item.IdVariable }, new { @class = "btn btn-primary btn-sm" })
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (item.Indicadores_archivos.Where(a => a.IdCarrera == idcarrera).Count() == 0)
+                                            {
+                                                @Html.ActionLink("Agregar", "Index", "Indicadores_archivos", new { idestandar = item.IdEstandar, idvariable = item.IdVariable }, new { @class = "btn btn-default btn-sm" })
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink(@item.Indicadores_archivos.Where(a => a.IdCarrera == idcarrera).Count().ToString() + " Archivo(s)", "Index", "Indicadores_archivos", new { idestandar = item.IdEstandar, idvariable = item.IdVariable }, new { @class = "btn btn-primary btn-sm" })
+                                            }
+
+                                        }
+
+
+                                        break;
+                                }
+
+                            }
+                            else
+                            {
+
+                                @Html.ActionLink("Agregar", "Index", "Indicadores_archivos", new { idestandar = item.IdEstandar, idvariable = item.IdVariable }, new { @class = "btn btn-default btn-sm" })
+                            }
+                        </td>
+                        @*<td>
+
+
+
+                            @*<a href="javascript:void(0);" id="deleteItem" class="btn btn-default btn-sm">Guardar</a>*@
+
+                    </tr>
+                </tbody>
+
+
+            }
+        </table>
+        <input type="submit" value="Guardar" class="btn btn-primary" id="btnGuardar" />
+}
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*<script type="text/javascript">
+       $(function () {
+
+           $("a[data-modal]").on("click", function (e) {
+
+               $('#myModalContent').load(this.href, function () {
+
+                   $('#myModal').modal({
+                                keyboard: true
+                   }, 'show');
+                                bindForm(this);
+                            });
+                            return false;
+                        });
+               });
+
+       function bindForm(dialog) {
+
+           $('form', dialog).submit(function () {
+               $('#progress').show();
+               $.ajax({
+
+                   url: this.action,
+                   type: this.method,
+                   data: $(this).serialize(),
+                   success: function (result) {
+                       if (result.success) {
+                           $('#myModal').modal('hide');
+                           $('#progress').hide();
+                           //location.reload();
+                       } else {
+                           $('#progress').hide();
+                           $('#myModalContent').html(result);
+                           bindForm();
+                       }
+                   }
+               });
+               return false;
+           });
+       }
+
+    </script>*@
+}
+@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@

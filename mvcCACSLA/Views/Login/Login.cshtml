@@ -1,0 +1,113 @@
+﻿@{
+
+    Layout = null;
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Sistema de Acreditación Nacional CACECA</title>
+    <link rel="icon" href="/Content/imagenes/icono.png">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/Content/signin.css" rel="stylesheet">
+ 
+
+</head>
+
+<body class="text-center">
+<form class="form-signin">
+    <img src="/Content/imagenes/logo_uabc_4.png" class="img-responsive logouabc" style="display:inline-block" />
+    <img src="/Content/imagenes/caceca_3.png" class="img-responsive logocaceca" style="display:inline-block" />
+
+    <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1><br/>
+    <label for="inputEmail" class="sr-only">Usuario</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <br/>
+    <p class="mt-5 mb-3 text-muted">&copy; @DateTime.Now.Year - D.R.© Universidad Autónoma de Baja California | Facultad de Ciencias Administrativas | Mexicali Baja California</p>
+</form>
+</body>
+</html>
+
+
+@Scripts.Render("~/bundles/jquery")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnLogin").on("click", function (e) {
+            e.preventDefault();
+            var model = {
+                Usuario: $('#Usuario').val(),
+                Password: $('#Password').val()
+            };
+
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(model),
+                url: "/Login/Login",
+                contentType: "application/json",
+                success: function (result) {
+                    if (result.success) {
+                        window.location = "/Home/Index";
+
+                    } else {
+                        alert("Usuario y/o Password Incorrecto");
+                        
+                    }
+                }
+            });
+
+        });
+
+    });
+    //function cargarCiudad() {
+    //    if (navigator.geolocation) {
+    //        if ("geolocation" in navigator) {
+    //            navigator.geolocation.getCurrentPosition(function (position) {
+    //                latitud = position.coords.latitude;
+    //                longitud = position.coords.longitude;
+    //                $.ajax({
+    //                    dataType: "json",
+    //                    url: "http://nominatim.openstreetmap.org/reverse",
+    //                    type: "get",
+    //                    data: { format: "json", lat: latitud, lon: longitud }
+    //                }).done(function (data) {
+    //                    ciudad = data.address.city;
+    //                    // alert(ciudad);
+    //                    if (ciudad == 'Mexicali') {
+    //                        //$("p").html("asdasdasdasdasdasd");
+
+    //                    }
+    //                    else {
+    //                        //alert('tu puta madre');
+    //                    }
+    //                });
+    //            });
+    //        }
+    //        else {
+    //            alert(' No se cuenta con soporte para geolocalización');
+    //        }
+    //    }
+
+    //}
+
+    //$(document).on("ready", cargarCiudad);
+
+
+</script>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_9F6318_fcacacslav2ModelStoreContainer" CdmEntityContainer="DB_9F6318_fcacacslav2Entities1">
+    <EntitySetMapping Name="Carreras">
+      <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Carreras">
+        <MappingFragment StoreEntitySet="Carreras">
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="Ini" ColumnName="Ini" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Indicadores">
+      <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Indicadores">
+        <MappingFragment StoreEntitySet="Indicadores">
+          <ScalarProperty Name="Observado" ColumnName="Observado" />
+          <ScalarProperty Name="IdCoordinacion" ColumnName="IdCoordinacion" />
+          <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+          <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+          <ScalarProperty Name="DescripcionEstandar" ColumnName="DescripcionEstandar" />
+          <ScalarProperty Name="DescripcionVariable" ColumnName="DescripcionVariable" />
+          <ScalarProperty Name="Referente" ColumnName="Referente" />
+          <ScalarProperty Name="DescripcionReferente" ColumnName="DescripcionReferente" />
+          <ScalarProperty Name="Anexo" ColumnName="Anexo" />
+          <ScalarProperty Name="ValorMax" ColumnName="ValorMax" />
+          <ScalarProperty Name="ValorObt" ColumnName="ValorObt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Indicadores_archivos">
+      <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Indicadores_archivos">
+        <MappingFragment StoreEntitySet="Indicadores_archivos">
+          <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+          <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+          <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+          <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+          <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+          <ScalarProperty Name="FechaSubido" ColumnName="FechaSubido" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Indicadores_detalle">
+      <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Indicadores_detalle">
+        <MappingFragment StoreEntitySet="Indicadores_detalle">
+          <ScalarProperty Name="IdFundamentacion" ColumnName="IdFundamentacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+          <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="SubeCarreras" ColumnName="SubeCarreras" />
+          <ScalarProperty Name="IdCoordinacion" ColumnName="IdCoordinacion" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios_niveles">
+      <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Usuarios_niveles">
+        <MappingFragment StoreEntitySet="Usuarios_niveles">
+          <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Estandar_1_GetVariable_Archivos" FunctionName="DB_9F6318_fcacacslav2Model.Store.usp_Estandar_1_GetVariable_Archivos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9F6318_fcacacslav2Model.usp_Estandar_1_GetVariable_Archivos_Result">
+          <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+          <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+          <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+          <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+          <ScalarProperty Name="FechaSubido" ColumnName="FechaSubido" />
+          <ScalarProperty Name="Ini" ColumnName="Ini" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_Estandar_GetVariables_Archivos" FunctionName="DB_9F6318_fcacacslav2Model.Store.usp_Estandar_1_GetVariable_Archivos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9F6318_fcacacslav2Model.usp_Estandar_1_GetVariable_Archivos_Result">
+          <ScalarProperty Name="IdArchivo" ColumnName="IdArchivo" />
+          <ScalarProperty Name="IdEstandar" ColumnName="IdEstandar" />
+          <ScalarProperty Name="IdVariable" ColumnName="IdVariable" />
+          <ScalarProperty Name="IdCarrera" ColumnName="IdCarrera" />
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+          <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+          <ScalarProperty Name="FechaSubido" ColumnName="FechaSubido" />
+          <ScalarProperty Name="Ini" ColumnName="Ini" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Coordinaciones">
+      <EntityTypeMapping TypeName="DB_9F6318_fcacacslav2Model.Coordinaciones">
+        <MappingFragment StoreEntitySet="Coordinaciones">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdCoordinacion" ColumnName="IdCoordinacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

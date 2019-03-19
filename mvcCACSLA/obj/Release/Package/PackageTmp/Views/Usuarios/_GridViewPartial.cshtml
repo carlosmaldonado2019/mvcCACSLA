@@ -1,0 +1,22 @@
+@Html.DevExpress().GridView(
+    settings =>
+    {
+        settings.Name = "myGridView";
+        settings.CallbackRouteValues = new { Controller = "UsuariosController", Action = "GridViewPartial" };
+        settings.Width = 450;
+      
+        settings.SettingsPager.PageSize =10;
+        settings.SettingsPager.FirstPageButton.Visible = true;
+        settings.SettingsPager.LastPageButton.Visible = true;
+        settings.SettingsPager.PageSizeItemSettings.Visible = true;
+        settings.SettingsPager.PageSizeItemSettings.Items = new string[] { "10", "20", "50" };
+
+        settings.Columns.Add("IdUsuario");
+        settings.Columns.Add("Login");
+
+        settings.Columns.Add("Pass");
+        settings.Columns.Add("Descripcion");
+        settings.Columns.Add("IdNivel");
+        settings.Columns.Add("Activo");
+        settings.Columns.Add("IdCarrera");
+    }).Bind(Model).GetHtml()

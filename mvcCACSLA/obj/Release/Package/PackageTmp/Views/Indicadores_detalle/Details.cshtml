@@ -1,0 +1,51 @@
+﻿@model mvcCACSLA.Models.Indicadores_detalle
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Indicadores_detalle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carreras.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Carreras.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Indicadores.DescripcionEstandar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Indicadores.DescripcionEstandar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuarios.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuarios.Login)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFundamentacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

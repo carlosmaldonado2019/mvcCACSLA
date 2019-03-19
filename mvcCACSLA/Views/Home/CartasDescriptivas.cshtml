@@ -1,0 +1,161 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cartas Descriptivas</title>
+</head>
+<body>
+    <div>
+            <table class="table table-striped table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>
+                           NombreArchivo
+                        </th>
+                        <th>
+                           Accion
+                        </th>
+                        
+                      
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Reglamento de Incorporación y Revalidación de Estudios</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(04)REGL_INCORP_ESTUD_.pdf", d= "(04)REGL_INCORP_ESTUD_.pdf"})">Descargar</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Reglamento General de Exámenes Profesionales</td>
+                        @*<td><a href="/ArchivosPDF/(05)REGL_EXA_PROF_.pdf">Descargar</a></td>*@
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(05)REGL_EXA_PROF_.pdf", d= "(05)REGL_EXA_PROF_.pdf"})">Descargar</a></td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Reglamento General de Bibliotecas</td>
+                        
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(08)REGL_BIBLIO_.pdf", d= "(08)REGL_BIBLIO_.pdf"})">Descargar</a></td>
+                        @*<td><a href="~/ArchivosPDF/(08)REGL_BIBLIO_.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Reglamento General de Estudios de Posgrado</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(10)REGL_EST_POSGRADO.pdf", d= "(10)REGL_EST_POSGRADO.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/(10)REGL_EST_POSGRADO.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>Reglamento Interior de las Academias</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(15)REGL_ACA_.pdf", d= "(15)REGL_ACA_.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/(15)REGL_ACA_.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>6</td>
+                        <td>Reglamento General de Becas</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(16)REGL_BECAS.pdf", d= "(16)REGL_BECAS.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/(16)REGL_BECAS.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>7</td>
+                        <td>Reglamento General para la Prestación de Prácticas Profesionales</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(18)REGL_PRACTICAS_PROF_.pdf", d= "(18)REGL_PRACTICAS_PROF_.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/(18)REGL_PRACTICAS_PROF_.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>8</td>
+                        <td>Reglamento de Servicio Social</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(24)REGL_SERV_SOC_.pdf", d= "(24)REGL_SERV_SOC_.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/(24)REGL_SERV_SOC_.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>9</td>
+                        <td>Reglamento de Investigación</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "(47)REGL_INV_UABC.pdf", d= "(47)REGL_INV_UABC.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/(47)REGL_INV_UABC.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>10</td>
+                        <td>Contrato Colectivo de Trabajo SETU</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "Contrato colectivo SETU.pdf", d= "Contrato colectivo SETU.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/Contrato colectivo SETU.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>11</td>
+                        <td>Contrato Colectivo de Trabajo SPSU</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "Contrato Colectivo SPSU.pdf", d= "Contrato Colectivo SPSU.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/Contrato Colectivo SPSU.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>12</td>
+                        <td>Convenio Modificatorio SETU</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "Convenio modificatorio SETU.pdf", d= "Convenio modificatorio SETU.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/Convenio modificatorio SETU.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>13</td>
+                        <td>Convenio Modificatorio SPSU</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "Convenio modificatorio SPSU.pdf", d= "Convenio modificatorio SPSU.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/Convenio modificatorio SPSU.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>14</td>
+                        <td>Estatuto Escolar</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "ESTATUTO_ESCOLAR_UABC_CON_REFORMAS_DE_DIC2015.pdf", d= "ESTATUTO_ESCOLAR_UABC_CON_REFORMAS_DE_DIC2015.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/ESTATUTO_ESCOLAR_UABC_CON_REFORMAS_DE_DIC2015.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>15</td>
+                        <td>Estatuto del Personal Académico</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "ESTATUTO_PERSONAL_ACADEMICO_OCTUBRE2014(VIGENTE).pdf", d= "ESTATUTO_PERSONAL_ACADEMICO_OCTUBRE2014(VIGENTE).pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/ESTATUTO_PERSONAL_ACADEMICO_OCTUBRE2014(VIGENTE).pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>16</td>
+                        <td>Estatutos Generales</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "ESTATUTOGENERALUABC_reforma_OCTUBRE2014(VIGENTE).pdf", d= "ESTATUTOGENERALUABC_reforma_OCTUBRE2014(VIGENTE).pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/ESTATUTOGENERALUABC_reforma_OCTUBRE2014(VIGENTE).pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>17</td>
+                        <td>Estatuto Orgànico del Tribunal Universitario</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "EstOrgTribUni.pdf", d= "EstOrgTribUni.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/EstOrgTribUni.pdf">Descargar</a></td>*@
+                    </tr>
+
+                    <tr>
+                        <td>18</td>
+                        <td>Reglamento para la Transparencia y Acceso a la Información</td>
+                        <td><a class="title" href="@Url.Action("Download","Home",new {p = "REGL_TRANSP_UABC_25-02-2014.pdf", d= "REGL_TRANSP_UABC_25-02-2014.pdf" })">Descargar</a></td>
+                        @*<td><a href="/ArchivosPDF/REGL_TRANSP_UABC_25-02-2014.pdf">Descargar</a></td>*@
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

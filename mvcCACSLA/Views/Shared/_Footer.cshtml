@@ -1,0 +1,38 @@
+﻿
+ <p class="text-center">&copy; @DateTime.Now.Year - D.R.© Universidad Autónoma de Baja California | Facultad de Ciencias Administrativas | Mexicali Baja California</p>
+      
+@*@Scripts.Render("~/bundles/jquery")*@
+@*<script type="text/javascript">
+    function cargarCiudad() {
+        if (navigator.geolocation) {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    latitud = position.coords.latitude;
+                    longitud = position.coords.longitude;
+                    $.ajax({
+                        dataType: "json",
+                        url: "http://nominatim.openstreetmap.org/reverse",
+                        type: "get",
+                        data: { format: "json", lat: latitud, lon: longitud }
+                    }).done(function (data) {
+                        ciudad = data.address.city;
+                        // alert(ciudad);
+                        if (ciudad == 'Mexicali') {
+                            $("p").html("Mexicali");
+
+                        }
+                        else {
+                            alert('tu puta madre');
+                        }
+                    });
+                });
+            }
+            else {
+                alert(' No se cuenta con soporte para geolocalización');
+            }
+        }
+
+    }
+
+    $(document).on("ready", cargarCiudad);
+</script>*@

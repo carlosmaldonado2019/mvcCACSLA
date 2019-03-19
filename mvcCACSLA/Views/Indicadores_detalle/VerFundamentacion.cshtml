@@ -1,0 +1,29 @@
+﻿@model mvcCACSLA.Models.Indicadores_detalle
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Fundamentacion</h3>
+</div>
+
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(m => Model.Descripcion, new { @class = "control-label col-sm-3" })
+            <div class="col-sm-9">
+                @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control required", @disabled = "disabled" })
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" data-dismiss="modal">Close</button>
+</div>

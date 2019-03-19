@@ -1,0 +1,51 @@
+﻿@model mvcCACSLA.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-login">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                    </div>
+                    <div class="panel-body">
+                        @using (Html.BeginForm())
+                         {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "Login Incorrecto!. Verifica tus datos.");
+                            <div>
+                                <fieldset>
+                                    <legend>Login</legend>
+                                    <div class="editor-label">
+                                        @Html.LabelFor(u => u.Usuario)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.TextBoxFor(u => u.Usuario)
+                                        @Html.ValidationMessageFor(u => u.Usuario,"",new { @class = "text-danger" })
+                                    </div>
+                                    <div class="editor-label">
+                                        @Html.LabelFor(u => u.Password)
+                                    </div>
+                                    <div class="editor-field">
+                                        @Html.PasswordFor(u => u.Password)
+                                        @Html.ValidationMessageFor(u => u.Password,"", new { @class = "text-danger" })
+                                    </div>
+                                    <br />  
+                                    <input type="submit" value="Iniciar Sesión" class="btn btn-primary btn-block" />
+                                </fieldset>
+                            </div>
+                         }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

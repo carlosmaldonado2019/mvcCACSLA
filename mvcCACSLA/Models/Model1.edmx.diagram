@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="96c1afc61d1f4e86b92304a580363679" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="DB_9F6318_fcacacslav2Model.Carreras" Width="1.5" PointX="5.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9F6318_fcacacslav2Model.Indicadores" Width="1.5" PointX="4.125" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9F6318_fcacacslav2Model.Indicadores_archivos" Width="2.5" PointX="5.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9F6318_fcacacslav2Model.Indicadores_detalle" Width="2" PointX="6.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9F6318_fcacacslav2Model.Usuarios" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_9F6318_fcacacslav2Model.Usuarios_niveles" Width="1.5" PointX="1.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Indicadores_archivos_Carreras" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Indicadores_detalle_Carreras" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Usuarios_Carreras" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Indicadores_archivos_Indicadores" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Indicadores_detalle_Indicadores" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Indicadores_archivos_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Indicadores_detalle_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Usuarios_Usuarios_niveles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_9F6318_fcacacslav2Model.Coordinaciones" Width="1.5" PointX="10.875" PointY="0.75" />
+        <AssociationConnector Association="DB_9F6318_fcacacslav2Model.FK_Usuarios_Coordinaciones" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

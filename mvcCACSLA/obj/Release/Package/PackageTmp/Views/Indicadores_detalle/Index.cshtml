@@ -1,0 +1,55 @@
+﻿@model IEnumerable<mvcCACSLA.Models.Indicadores_detalle>
+@using System.Web.UI.WebControls;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carreras.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indicadores.DescripcionEstandar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuarios.Login)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carreras.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Indicadores.DescripcionEstandar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuarios.Login)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdFundamentacion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdFundamentacion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdFundamentacion })
+        </td>
+    </tr>
+}
+
+</table>

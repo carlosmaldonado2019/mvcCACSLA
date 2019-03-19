@@ -1,0 +1,92 @@
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\ApplicationInsights.config
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\csc.exe
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\System.Collections.Immutable.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\System.Reflection.Metadata.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\vbc.exe
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\VBCSCompiler.exe
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\VBCSCompiler.exe.config
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.Test.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.Test.pdb
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Mvc.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Optimization.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Http.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\EntityFramework.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\PagedList.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Razor.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.Razor.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\Microsoft.Web.Infrastructure.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Net.Http.Formatting.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\Newtonsoft.Json.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.Deployment.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.pdb
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Mvc.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Optimization.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Http.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\EntityFramework.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\PagedList.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Razor.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.Razor.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Net.Http.Formatting.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\Newtonsoft.Json.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.Deployment.xml
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\obj\Debug\mvcCACSLA.Test.csprojResolveAssemblyReference.cache
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\obj\Debug\mvcCACSLA.Test.dll
+Z:\comun\CARLOS MALDONADO\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\obj\Debug\mvcCACSLA.Test.pdb
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\ApplicationInsights.config
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\csc.exe
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.CodeAnalysis.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.CSharp.Core.targets
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\Microsoft.VisualBasic.Core.targets
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\System.Collections.Immutable.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\System.Reflection.Metadata.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\vbc.exe
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\VBCSCompiler.exe
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.Test.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.Test.pdb
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Mvc.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Optimization.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Http.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\EntityFramework.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\PagedList.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Razor.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.Razor.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Net.Http.Formatting.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\Newtonsoft.Json.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.pdb
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Mvc.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Optimization.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Http.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\EntityFramework.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\PagedList.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.Razor.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.Razor.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Net.Http.Formatting.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\Newtonsoft.Json.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\es\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\obj\Debug\mvcCACSLA.Test.csprojResolveAssemblyReference.cache
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\obj\Debug\mvcCACSLA.Test.dll
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\obj\Debug\mvcCACSLA.Test.pdb
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\bin\Debug\mvcCACSLA.dll.config
+C:\codigo fuente mvcCACSLA\mvcCACSLA\mvcCACSLA.Test\obj\Debug\mvcCACSLA.Test.csproj.CoreCompileInputs.cache

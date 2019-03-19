@@ -1,0 +1,261 @@
+﻿@model IEnumerable<mvcCACSLA.Models.Indicadores_archivos>
+@using System.Web.UI.WebControls;
+@using mvcCACSLA.Models.Constantes;
+@using mvcCACSLA.Models;
+
+@{
+    ViewBag.Title = "Indicadores | Listado de Evidencias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<style type="text/css">
+    .center img {
+        height: 128px;
+        width: 128px;
+    }
+</style>
+
+<br />
+<h2 class="text-center">Listado de Evidencias</h2>
+
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-body">
+        @{
+            UserManager UM = new UserManager();
+            string role = UM.GetUserRole(User.Identity.Name);
+            if (role == EstandarNum.RoleAcree)
+            {
+
+            }
+            else
+            {
+                @Html.Raw("<a data-modal='' href='" + Url.Action("Create", "Indicadores_archivos", new { idestandar = ViewBag.Idestandar, idvariable = ViewBag.Idvariable }) + "' title='Subir Evidencias'> <span class='glyphicon glyphicon-upload'></span>Subir Evidencias</a>")
+
+            }
+        }
+        <a id="regresar" href=""><span class='glyphicon glyphicon-arrow-left'></span>Regresar</a>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal_fundamentacion" style="display: none">
+    <div class="text-center">
+        <img alt="" src=~/Content/imagenes/ajax-loader.gif />
+    </div>
+</div>
+
+<table class="table table-striped table-hover table-condensed">
+    <thead>
+        <tr>
+            <th>
+                @* @Html.DisplayNameFor(model => model.RutaArchivo)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreArchivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaSubido)
+            </th>
+            <th>
+                Carrera
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Indicadores.DescripcionEstandar)
+            </th>
+            <th>
+                Usuario
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @* @Html.DisplayFor(modelItem => item.RutaArchivo)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreArchivo)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaSubido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Carreras.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Indicadores.DescripcionEstandar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuarios.Login)
+                </td>
+                <td>
+
+                    @{
+
+                        if (role == EstandarNum.RoleAcree)
+                        {
+
+                        }
+                        else
+                        {
+                            @*@Html.ActionLink("Eliminar", "EliminarArchivo", new { id = item.IdArchivo })*@
+                            @*<a class="title" id="Eliminar" href="@Url.Action("EliminarArchivo","Indicadores_archivos",new {id = item.IdArchivo})"><img src="~/Content/imagenes/delete.png" title="Eliminar Archivo" width="24px" height="24px" /></a>*@
+                            <a class="title" id="Eliminar" href="Indicadores_archivos/EliminarArchivo?id=@item.IdArchivo"><img src="~/Content/imagenes/delete.png" title="Eliminar Archivo" width="24px" height="24px" /></a>
+                        }
+                    }
+
+                   
+                    @* <a class="title" href="javascript:verArchivo('/Content/documentos/' @item.NombreArchivo)">Ver</a>*@
+
+                    @*<a href="javascript:obtieneArchivos('/Content/Produccion/CIM/Documentos/2016/4/6/8/2/2/2016_4_6_8_2_2_7.pdf','Estado de Variación de la Hacienda Pública','0')"><img src="../imagenes/pdf120.png" title="Mostrar Archivo" width="24px" height="24px"></a>*@
+
+                    @*<a class="title" href="@Url.Action("Download","Indicadores_archivos",new {p = item.NombreArchivo, d= item.NombreArchivo})">Descargar</a>*@
+
+                    @*<i class="fa fa-download"></i><a class="title" href="/Indicadores_archivos/Download/?p=@(item.NombreArchivo)&d=@item.NombreArchivo">Descargar</a>*@
+                    @*@Html.ActionLink("Descargar", "DescargarArchivo", new { id = item.IdArchivo })*@
+                </td>
+                <td>
+                    <a class="title" href="@Url.Action("Download","Indicadores_archivos",new {p = item.NombreArchivo, d= item.NombreArchivo})"><img src="~/Content/imagenes/pdf120.png" title="Mostrar Archivo" width="24px" height="24px" /></a>
+                </td>
+            </tr>
+
+        </tbody>
+                        }
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $("a[data-modal]").on("click", function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        keyboard: true
+                    }, 'show');
+
+                    bindForm(this);
+                });
+                return false;
+            });
+
+            $("#Eliminar").on("click", function (e) {
+                e.preventDefault();
+                var link = $("#Eliminar").attr("href");
+                $.ajax({
+                    
+                    url: link,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    beforeSend: function () {
+                        $(".modal_fundamentacion").show();
+                     },
+                    success: function (result) {
+                        if (result.success) {
+                            $(".modal_fundamentacion").hide();
+                            $('#progress').hide();
+                            location.reload();
+                        } else {
+                            $(".modal_fundamentacion").hide();
+                            location.reload();
+                            //$('#myModalContent').html(result);
+                            //bindForm();
+                        }
+                    }
+                });
+                return false;
+            });
+
+
+
+            $("#regresar").click(function (e) {
+                e.preventDefault();
+                window.history.back();
+                
+            })
+        });
+
+
+        function bindForm(dialog) {
+            $('form', dialog).submit(function () {
+                var v = ValidarArchivo(v);
+                if (v == true) {
+                    var formdata = new FormData($('form').get(0));
+                    $('.loader').show();
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        data: formdata,
+                        processData: false,
+                        contentType: false,
+                        success: function (result) {
+                            if (result.success) {
+                                $('#myModal').modal('hide');
+                                $('.loader').hide();
+                                location.reload();
+                            } else {
+                                $('.loader').hide();
+                                $('#myModalContent').html(result);
+                                bindForm();
+                            }
+                        }
+                    });
+
+                }
+                return false;
+
+            });
+
+            $('form', dialog).change(function () {
+                var v = ValidarArchivo(v);
+            });
+
+            function ValidarArchivo(validar) {
+                var files = document.getElementById('FileUpload1');
+                var iSize = document.getElementById('FileUpload1').files[0].size / 1024;
+
+                if (parseInt(iSize) > 5000) {
+                    alert("El documento no debe de ser mayor a 5MB");
+                    validar = false;
+                    return validar;
+                }
+
+                var type = files.value;
+                var ext = type.split(".").pop();
+                if (ext == "pdf" || ext == "PDF") {
+                    validar = true;
+                    return validar;
+                }
+                else {
+                    alert("Por favor seleccione un documento con extensión (.pdf)");
+                    validar = false;
+                    return validar;
+                }
+
+            };
+        }
+
+    </script>
+}

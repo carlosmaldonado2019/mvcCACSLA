@@ -1,0 +1,75 @@
+﻿@model mvcCACSLA.Models.Usuarios
+
+@{
+    ViewBag.Title = "Detalles Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de Usuario</h2>
+
+<div>
+    <h4>Usuarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Carreras.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Carreras.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuarios_niveles.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuarios_niveles.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coordinaciones.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coordinaciones.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdUsuario }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
